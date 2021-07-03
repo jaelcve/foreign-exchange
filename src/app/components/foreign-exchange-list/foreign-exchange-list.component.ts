@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { ForeignExchangeService } from 'src/app/core/foreign-exchange.service';
 import { ForeignExchange } from 'src/app/models/foreign-exchange.model';
 
@@ -9,9 +8,11 @@ import { ForeignExchange } from 'src/app/models/foreign-exchange.model';
   templateUrl: './foreign-exchange-list.component.html',
   styleUrls: ['./foreign-exchange-list.component.scss']
 })
-export class ForeignExchangeListComponent implements OnInit, AfterViewInit {
+export class ForeignExchangeListComponent implements OnInit {
 
-  foreignExchangeData: any;
+  foreignExchangeData$: Observable<ForeignExchange>;
+  gridHeight: string;
+  largeScreen = 992;
 
 
   constructor(
@@ -19,9 +20,12 @@ export class ForeignExchangeListComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
+    this.foreignExchangeData$ = this.foreignExchangeService.getForeignExchange();
+    this.gridHeight = (window.innerWidth <= this.largeScreen) ? '2:2' : '2:1';
   }
 
-  ngAfterViewInit(): void {
+  onResize(event: any) {
+    this.gridHeight = (event.target.innerWidth <= this.largeScreen) ? '2:2' : '2:1';
   }
 
 }
