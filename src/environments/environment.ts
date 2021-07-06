@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  submit: true,
   foreignExchange: 'https://api.exchangerate-api.com/v4/latest/GBP'
 };
 
