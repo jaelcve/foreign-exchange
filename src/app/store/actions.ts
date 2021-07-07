@@ -5,6 +5,6 @@ export class ForeignExchanges {
   constructor(public foreignExchanges: ForeignExchange) { }
 }
 
-export class Error {
-  static readonly type = '[Navigate] Error';
+export class ErrorPage {
+  static readonly type = '[Navigate] ErrorPage';
 }

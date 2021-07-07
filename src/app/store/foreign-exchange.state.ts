@@ -1,7 +1,8 @@
 import { ForeignExchange } from "../models/foreign-exchange.model";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { Injectable } from "@angular/core";
-import { ForeignExchanges } from "./actions";
+import { ErrorPage, ForeignExchanges } from "./actions";
+import { Navigate } from "@ngxs/router-plugin";
 
 export interface ForeignExchangeModel {
   foreignExchanges: ForeignExchange
@@ -29,6 +30,11 @@ export class ForeignExchangeState {
       ...state,
       foreignExchanges: action.foreignExchanges
     });
+  }
+
+  @Action(ErrorPage)
+  public navigateToError(context: StateContext<ForeignExchangeModel>) {
+    context.dispatch(new Navigate(['/error']))
   }
 
 

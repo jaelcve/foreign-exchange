@@ -5,7 +5,7 @@ import { Store } from "@ngxs/store";
 import { Observable } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 import { ForeignExchange } from "../models/foreign-exchange.model";
-import { ForeignExchanges } from "../store";
+import { ErrorPage, ForeignExchanges } from "../store";
 import { ForeignExchangeService } from "./foreign-exchange.service";
 
 @Injectable({
@@ -23,7 +23,7 @@ export class ForeignExchangeResolver implements Resolve<ForeignExchange>{
     return this.foreignExchangeService.getForeignExchange().pipe(
       map(foreignExchanges => {
         if (!foreignExchanges) {
-          //TODO: ADD error page
+          this.store.dispatch(new ErrorPage());
         }
         this.store.dispatch(new ForeignExchanges(foreignExchanges));
         return foreignExchanges;

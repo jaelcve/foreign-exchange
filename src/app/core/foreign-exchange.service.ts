@@ -199,7 +199,6 @@ export class ForeignExchangeService {
       return this.httpClient.get<ForeignExchange>(environment.foreignExchange, httpOptions)
         .pipe(
           map(foreignExchanges => {
-            console.log('foren', foreignExchanges)
             return foreignExchanges as unknown as ForeignExchange;
           }),
           catchError(err => {

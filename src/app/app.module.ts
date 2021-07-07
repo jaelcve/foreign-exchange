@@ -10,13 +10,16 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { MatButtonModule } from '@angular/material/button';
 
 import * as store from './store';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ForeignExchangeListComponent
+    ForeignExchangeListComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +27,7 @@ import * as store from './store';
     NoopAnimationsModule,
     HttpClientModule,
     MatGridListModule,
+    MatButtonModule,
     NgxsRouterPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsModule.forRoot([store.ForeignExchangeState])

@@ -1,2 +1,2 @@
 export * from './actions';
-export * from './foreign-exchange.state'
+export * from './foreign-exchange.state';
