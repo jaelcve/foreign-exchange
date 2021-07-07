@@ -1,28 +1,28 @@
 <div class="foreign-exchange">
   <ng-container *ngIf="foreignExchangeData$ | async as foreignExchangeData">
 
-    <mat-grid-list cols="12" [rowHeight]="gridHeight" (window:resize)="onResize($event)">
+    <mat-grid-list cols="12" [rowHeight]="gridHeight" (window:resize)="onResize($event)" role="list">
       <mat-grid-tile [colspan]="12" [rowspan]="1"></mat-grid-tile>
 
       <mat-grid-tile [colspan]="12" [rowspan]="2" class="foreign-exchange-title">
-        <h1 tabindex="1">Foreign Exchange</h1>
+        <h1 id="foreign-exchange-title" tabindex="1">Foreign Exchange</h1>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="4"></mat-grid-tile>
       <mat-grid-tile [colspan]="2">
-        <p tabindex="0"><strong>Currency</strong></p>
+        <p id="currency-title" tabindex="0"><strong>Currency</strong></p>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="2">
-        <p tabindex="0"><strong>Value</strong></p>
+        <p id="value-title" tabindex="0"><strong>Value</strong></p>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="4"></mat-grid-tile>
 
       <ng-container *ngFor="let rates of foreignExchangeData.rates | keyvalue">
         <mat-grid-tile [colspan]="4"></mat-grid-tile>
-        <mat-grid-tile [colspan]="2">
-          <p tabindex="0">{{rates.key}}</p>
+        <mat-grid-tile [colspan]="2" role="listitem"> 
+          <p id="{{rates.key}}" tabindex="0">{{rates.key}}</p>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="2">
-          <p tabindex="0">{{rates.value}}</p>
+        <mat-grid-tile [colspan]="2" role="listitem">
+          <p id="{{rates.key}}-value" tabindex="0">{{rates.value}}</p>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="4"></mat-grid-tile>
 

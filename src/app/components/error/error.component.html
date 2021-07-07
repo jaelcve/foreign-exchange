@@ -1,0 +1,15 @@
+<mat-grid-list cols="12" rowHeight="4rem">
+  <mat-grid-tile [colspan]="12" [rowspan]="1"></mat-grid-tile>
+
+  <mat-grid-tile [colspan]="12" [rowspan]="1">
+    <h1 id="error-title" tabindex="1">Error</h1>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="12" [rowspan]="1">
+    <p class="error-desc" tabindex="0">There was an error while retrieving the information.</p>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="12" [rowspan]="1">
+    <button id="btn" mat-flat-button color="primary" (click)="goBack()">Return</button>
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="12" [rowspan]="1"></mat-grid-tile>
+</mat-grid-list>
