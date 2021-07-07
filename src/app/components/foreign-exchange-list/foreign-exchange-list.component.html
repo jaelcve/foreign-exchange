@@ -22,7 +22,7 @@
           <p id="{{rates.key}}" tabindex="0">{{rates.key}}</p>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="2" role="listitem">
-          <p id="{{rates.key}}-value" tabindex="0">{{rates.value}}</p>
+          <p id="{{rates.key}}-value" tabindex="0">{{rates.value | baseCurrency}}</p>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="4"></mat-grid-tile>
 

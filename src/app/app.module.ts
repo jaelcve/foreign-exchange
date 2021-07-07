@@ -11,15 +11,18 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { MatButtonModule } from '@angular/material/button';
+import { ErrorComponent } from './components/error/error.component';
 
 import * as store from './store';
-import { ErrorComponent } from './components/error/error.component';
+import * as pipes from './pipe/';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
     AppComponent,
     ForeignExchangeListComponent,
-    ErrorComponent
+    ErrorComponent,
+    pipes.BaseCurrencyPipe
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,7 @@ import { ErrorComponent } from './components/error/error.component';
     MatButtonModule,
     NgxsRouterPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsModule.forRoot([store.ForeignExchangeState])
+    NgxsModule.forRoot([store.ForeignExchangeState], { developmentMode: !environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

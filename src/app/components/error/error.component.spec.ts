@@ -1,4 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { By } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 import { ErrorComponent } from './error.component';
 
@@ -8,7 +11,10 @@ describe('ErrorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ErrorComponent ]
+      declarations: [ ErrorComponent ],
+      imports: [
+        MatGridListModule
+      ]
     })
     .compileComponents();
   });
@@ -22,4 +28,14 @@ describe('ErrorComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call goBack() if clicked', fakeAsync(() => {
+    spyOn(component, 'goBack');
+    let btn = fixture.debugElement.query(By.css('button'));
+    btn.triggerEventHandler('click', null);
+    tick();
+    fixture.detectChanges();
+    expect(component.goBack).toHaveBeenCalledWith();
+  }))
+  
 });

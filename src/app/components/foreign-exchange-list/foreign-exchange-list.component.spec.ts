@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { NgxsModule } from '@ngxs/store';
 
 import { ForeignExchangeListComponent } from './foreign-exchange-list.component';
 
@@ -14,6 +15,7 @@ describe('ForeignExchangeListComponent', () => {
       imports: [
         HttpClientModule,
         MatGridListModule,
+        NgxsModule.forRoot()
       ]
     })
     .compileComponents();
